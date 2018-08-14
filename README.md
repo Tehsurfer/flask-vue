@@ -1,4 +1,4 @@
-# Flask & Vue.js Demo
+# Flask & Vue.js Starter Kit
 
 ## Backend
 
@@ -19,10 +19,9 @@
 
 ### Prerequisites
 - Node >= v8.0.0
-- Yarn
 
 ### Running the Vue App
-- Run `yarn install`
-- Run `yarn start`
+- Run `npm install`
+- Run `npm start`
 - Open `localhost:3000` in your browser
 - Enter the id of a Dataset you own
