@@ -9,7 +9,7 @@
 
 ### Running the Flask App
 - Create a virtual environment and activate it
-- Open `Config.py` and add update the environment variables below
+- Open `Config.py` and update the environment variables below
   - BLACKFYNN_API_TOKEN = ""
   - BLACKFYNN_API_SECRET = ""
 - Run `pip install -r requirements.txt`
