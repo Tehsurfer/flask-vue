@@ -28,7 +28,7 @@ def home():
 
 @app.route('/api/dataset/<id>', methods=['GET'])
 def dataset(id):
-    dataset = bf.get_dataset(id)2
+    dataset = bf.get_dataset(id)
     return 'Dataset: {}'.format(dataset.name)
 
 
@@ -72,3 +72,37 @@ def datasets():
         channel_array = data[key]
         break
     return json.dumps({'data': str(channel_array.tolist())})
+
+# /api/get_channels: Returns channel names for a given dataset
+@app.route('/api/get_channels', methods=['GET'])
+def channels():
+    name = request.headers['Name']
+    global bf
+    global time_series_items
+    data = []
+    channel_names = []
+    for item in time_series_items:
+        print(item.name)
+        if item.name == name:
+            data = item.get_data(length='1s')
+    for key in data:
+        channel_names.append(key)
+    return json.dumps({'data': channel_names}) 
+
+# /api/get_channel: Returns data for a single channel
+@app.route('/api/get_channel', methods=['GET'])
+def getChannel():
+    name = request.headers['Name']
+    channel = request.headers['Channel']
+    print('request is:' + channel)
+    global bf
+    global time_series_items
+    data = []
+    channel_names = []
+    for item in time_series_items:
+        print(item.name)
+        if item.name == name:
+            data = item.get_data(length='1s')
+            print
+    channel = channel.decode("utf-8")
+    return json.dumps({'data': str(data[channel].tolist())})
